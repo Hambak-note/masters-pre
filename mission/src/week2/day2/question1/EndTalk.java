@@ -1,4 +1,4 @@
-package week2.day2;
+package week2.day2.question1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
