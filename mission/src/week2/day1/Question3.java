@@ -9,7 +9,9 @@ public class Question3 {
 
     public static void main(String[] args) {
         int mazeBoard[][] = initMazeBoard();
-        Stack<int[]> pathStack = dfsMaze(mazeBoard, 7, 7);
+        int exitX = mazeBoard.length-1;
+        int exitY = mazeBoard[0].length-1;
+        Stack<int[]> pathStack = dfsMaze(mazeBoard, exitX, exitY);
 
         System.out.println(pathStack.size());
 
@@ -27,9 +29,14 @@ public class Question3 {
      * 이동 가능한 칸은 1 이동하지 못하는 칸은 0으로 표시
      */
     static public int[][] initMazeBoard(){
-        int[][] mazeBoard = new int[][]{{1, 0,0,0,1,0,0,0}, {1,1,1,0,1,1,1,1},
-                {0,0,1,1,1,0,1,0}, {0, 0, 1, 0,0,0,1,0}, {0, 1,1,0,1,1,1,1},
-                {1,0,0,0,1,0,0,0}, {0, 1, 0, 0, 1,1,1,1}, {1,0,0,1,0,0,0,1}};
+        int[][] mazeBoard = new int[][]{{0, 0, 1, 1, 1, 1, 1, 1},
+                {1, 0, 0, 0, 0, 0, 0, 1},
+                {1, 1, 1, 0, 1, 1, 1, 1},
+                {1, 1, 1, 0, 1, 1, 1, 1},
+                {1, 0, 0, 0, 0, 0, 0, 1},
+                {1, 0, 1, 1, 1, 1, 1, 1},
+                {1, 0, 0, 0, 0, 0, 0, 0},
+                {1, 1, 1, 1, 1, 1, 1, 0}};
 
         return mazeBoard;
     }
@@ -59,7 +66,7 @@ public class Question3 {
                 }
 
                 //이미 방문했던 곳이거나 막힌 길인경우
-                if(isVisited[nextX][nextY] == true || mazeBoard[nextX][nextY] == 0) continue;
+                if(isVisited[nextX][nextY] == true || mazeBoard[nextX][nextY] == 1) continue;
 
 
                 conditionCheck = true;
