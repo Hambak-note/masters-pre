@@ -6,11 +6,12 @@ import java.io.InputStreamReader;
 
 public class EndTalk {
 
+    public static boolean inputCheck = false;
     public static void main(String[] args) throws IOException {
-        run("기러기");
+        startGame("기러기");
     }
 
-    public static void run(String start) throws IOException {
+    public static void startGame(String start) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 
@@ -42,5 +43,14 @@ public class EndTalk {
             }
         }
     }
-}
 
+    public boolean isValid(String preStr, String curStr){
+        char preLast = preStr.charAt(preStr.length() - 1);
+        char curFirst = curStr.charAt(0);
+
+        if(preLast == curFirst && curStr.length() > 1){
+            return true;
+        }
+        return false;
+    }
+}
