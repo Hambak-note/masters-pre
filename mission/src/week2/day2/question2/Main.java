@@ -37,7 +37,7 @@ public class Main {
             case 2:
                 System.out.print("날짜(1~30)?");
                 day = Integer.parseInt(br.readLine());
-                System.out.println(day + "의 할일은 " + monthSchedule.hasWork(day));
+                System.out.println(day + "일의 할일은 " + monthSchedule.hasWork(day));
                 System.out.println();
                 break;
             case 3:

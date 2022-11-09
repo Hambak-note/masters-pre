@@ -13,7 +13,6 @@ public class MonthSchedule {
 
     public void input(int day, String work){
         days[day].saveTodayWork(work);
-        System.out.println(days[day].hasWork());
     }
 
     public String hasWork(int day){
