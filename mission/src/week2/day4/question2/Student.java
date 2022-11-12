@@ -5,37 +5,74 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Student {
-    private String name;
+
     private int id;
-    private String majors;
-    private ArrayList<Integer> grades;
+    private String name;
+    private String major;
+    private Map<Integer, Score> scores;
 
-    public Student(String name, int id, String majors, ArrayList<Integer> grades) {
-        this.name = name;
+    public Student(int id, String name, String major, int numberOfSubject) {
         this.id = id;
-        this.majors = majors;
-        this.grades = grades;
+        this.name = name;
+        this.major = major;
+        initScore(numberOfSubject);
+
     }
 
-    public ArrayList<Integer> getGrades() {
-        return grades;
+    private void initScore(int numberOfSubject){
+        scores = new HashMap<>();
+        for(int i = 1; i <= numberOfSubject; i++){
+            scores.put(i, new Score(-1));
+        }
     }
 
-    private int calculateTotal(){
+    public void addScore(int subjectId, int score){
+        scores.put(subjectId, new Score(score));
+    }
+
+    public int getScores(int subjectId) {
+        Score s = scores.get(subjectId);
+        int score = s.getScore();
+        return score;
+    }
+
+    public void printStudentState(){
+        System.out.println(name + " 햑생은 " + scores.size() + "과목을 수강했습니다");
+        System.out.println();
+    }
+
+    public String getName() { return name; }
+
+    public int getSubjectCount(){
+        int count = 0;
+        for (Integer integer : scores.keySet()) {
+            int score = scores.get(integer).getScore();
+            if(score == -1) continue;
+            count++;
+        }
+        return count;
+    }
+
+    public int getTotal(){
         int total = 0;
-        for(int i = 0; i < grades.size(); i++){
-            total += grades.get(i);
+        for (Integer integer : scores.keySet()) {
+            int score = scores.get(integer).getScore();
+            if(score == -1) continue;
+            total += score;
         }
         return total;
     }
 
-    private double calculateAvg(){
-        return calculateTotal() / (double) grades.size();
+    public double getAverage(){
+        return getTotal() / (double) getSubjectCount();
     }
 
-    public void printStudentState(){
-        System.out.println(name + "학생은 " + grades.size() + "과목을 수강했습니다.");
-        System.out.println("총점은 " + calculateTotal() + "점이고 평균은 "+ calculateAvg() + "입니다.");
-        System.out.println("===============================");
+    @Override
+    public String toString() {
+        String output = name + ":" + id + ":" + major + ":";
+        for (Integer key : scores.keySet()) {
+            output += (scores.get(key).getScore()) + ":";
+        }
+        return output;
     }
 }
