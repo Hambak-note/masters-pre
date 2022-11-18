@@ -1,7 +1,7 @@
 # Scanner & Buffered Reader
 
 - Scanner와 BufferedReader 모두 사용자(키보드) 입력을 받을 수 있는 기능을 제공한다.
-- 두 클래스가 가지고 있는 함수들에도 차이가 있지만 가장 큰 차이는 ==속도==이다.
+- 두 클래스가 가지고 있는 함수들에도 차이가 있지만 가장 큰 차이는 __속도__ 이다.
 
 - Scanner와 BufferedReader 사용법
     ```java
@@ -26,7 +26,7 @@
 <br/>
 
 ### 동작 방식
-- 두 클래스는 공통적으로 생성할 때 ==System.in==을 매개변수로 받는다.
+- 두 클래스는 공통적으로 생성할 때 __System.in__ 을 매개변수로 받는다.
 - System.in은 java.lang 패키지의 System 클래스이며, System 클래스의 in은 정적(static) 변수이다.
     ```java
     public final class System {
